@@ -1,4 +1,4 @@
-package basics.basics.multivm;
+package basics.multivm;
 
 import com.hazelcast.client.HazelcastClient;
 import com.hazelcast.client.config.ClientConfig;

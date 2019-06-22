@@ -1,4 +1,4 @@
-package basics.basics.multivm;
+package basics.multivm;
 
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
