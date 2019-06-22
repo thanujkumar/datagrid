@@ -2,6 +2,7 @@ package basics.multivm.configs;
 
 import com.hazelcast.config.Config;
 import com.hazelcast.config.JoinConfig;
+import com.hazelcast.config.ManagementCenterConfig;
 import com.hazelcast.config.NetworkConfig;
 import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
@@ -15,6 +16,8 @@ import java.util.Map;
  * <p>
  * If we want to choose to use only one port, we can disable the auto-increment feature of a port by setting
  * auto-increment to false.
+ *
+ * Adding this node programatically to management center (ensure to run management-center from download or war)
  */
 public class Node1ProgramaticServer {
 
@@ -22,6 +25,9 @@ public class Node1ProgramaticServer {
 
     public static void main(String[] args) {
         Config config = new Config();
+        ManagementCenterConfig manCenterCfg = config.getManagementCenterConfig();
+        manCenterCfg.setEnabled(true);
+        manCenterCfg.setUrl("http://localhost:8080/hazelcast-mancenter");
         NetworkConfig network = config.getNetworkConfig();
         network.setPort(5701).setPortCount(20);
         network.setPortAutoIncrement(true);
@@ -34,9 +40,10 @@ public class Node1ProgramaticServer {
         //We will create data in server for node1 to distributed Map
         Map<Long, String> map = node1.getMap("node1");
 
-        FlakeIdGenerator idGenerator = node1.getFlakeIdGenerator("id2");
+        FlakeIdGenerator idGenerator = node1.getFlakeIdGenerator("id1");
         for (int i = 0; i < 10; i++) {
             map.put(idGenerator.newId(), "Node1ProgramaticServer" + i);
         }
+
     }
 }
