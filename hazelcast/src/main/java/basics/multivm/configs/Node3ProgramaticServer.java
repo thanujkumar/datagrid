@@ -16,12 +16,13 @@ import java.util.Map;
  * <p>
  * If we want to choose to use only one port, we can disable the auto-increment feature of a port by setting
  * auto-increment to false.
- *
+ * <p>
  * Adding this node programatically to management center (ensure to run management-center from download or war)
  */
 public class Node3ProgramaticServer {
 
-     static HazelcastInstance node3;
+    private static HazelcastInstance node3;
+
     public static void main(String[] args) {
         Config config = new Config();
         ManagementCenterConfig manCenterCfg = config.getManagementCenterConfig();

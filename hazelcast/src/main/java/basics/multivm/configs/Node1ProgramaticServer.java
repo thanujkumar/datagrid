@@ -21,7 +21,7 @@ import java.util.Map;
  */
 public class Node1ProgramaticServer {
 
-    static HazelcastInstance node1;
+    private static HazelcastInstance node1;
 
     public static void main(String[] args) {
         Config config = new Config();

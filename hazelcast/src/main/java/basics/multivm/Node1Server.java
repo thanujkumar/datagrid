@@ -12,7 +12,7 @@ import java.util.Map;
  * cluster.
  */
 public class Node1Server {
-    static HazelcastInstance node1;
+    private static HazelcastInstance node1;
 
 
     public static void main(String[] args) {

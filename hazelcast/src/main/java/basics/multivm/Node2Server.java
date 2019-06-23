@@ -7,7 +7,7 @@ import com.hazelcast.flakeidgen.FlakeIdGenerator;
 import java.util.Map;
 
 public class Node2Server {
-    static HazelcastInstance node2;
+    private static HazelcastInstance node2;
 
 
         public static void main(String[] args) {

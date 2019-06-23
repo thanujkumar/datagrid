@@ -19,7 +19,7 @@ new Hazelcast node in our JVM which will have to join the cluster.
 
 public class MultiNodeServerSameVM {
 
-    static HazelcastInstance node1, node2;
+    private static HazelcastInstance node1, node2;
 
 
     public static void main(String[] args) {
@@ -27,11 +27,19 @@ public class MultiNodeServerSameVM {
         node2 = Hazelcast.newHazelcastInstance();
 
         //We will create data in server for node1 to distributed Map
-        Map<Long, String> map = node1.getMap("data");
+        Map<Long, String> map = node1.getMap("node1");
 
-        FlakeIdGenerator idGenerator = node1.getFlakeIdGenerator("newid");
+        FlakeIdGenerator idGenerator1 = node1.getFlakeIdGenerator("node1");
         for (int i = 0; i < 10; i++) {
-            map.put(idGenerator.newId(), "Message" + i);
+            map.put(idGenerator1.newId(), "Message" + i);
+        }
+
+        //We will create data in server for node1 to distributed Map
+        map = node2.getMap("node2");
+
+        FlakeIdGenerator idGenerator2 = node2.getFlakeIdGenerator("node2");
+        for (int i = 0; i < 10; i++) {
+            map.put(idGenerator2.newId(), "Message" + i);
         }
     }
 }
