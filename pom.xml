@@ -16,7 +16,7 @@
 
 
     <properties>
-        <hazelcast.version>3.12.1</hazelcast.version>
+        <hazelcast.version>3.12.13</hazelcast.version>
     </properties>
 
     <dependencyManagement>
